@@ -8,7 +8,7 @@ void logger(char *file, char *fmt, ...)
 {
         FILE *f = fopen(file, "a");
         if (f == NULL) {
-                printf("Error opening file\n");
+                fprintf(stderr, "Error opening file\n");
                 exit(1);
         }
 
