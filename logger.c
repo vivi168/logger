@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include "logger.h"
 
-void logger(char *file, char *fmt, ...)
+void logger(char *file, char lv, char *fmt, ...)
 {
         FILE *f = fopen(file, "a");
         if (f == NULL) {
@@ -26,7 +26,7 @@ void logger(char *file, char *fmt, ...)
         char buf[TIMSIZ];
         strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", timeinfo);
 
-        fprintf(f, "[%s]: %s\n", buf, msg);
+        fprintf(f, "%c, [%s]: %s\n", lv, buf, msg);
 
         fclose(f);
 }
